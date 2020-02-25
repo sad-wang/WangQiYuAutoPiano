@@ -1,11 +1,12 @@
 <template>
-
+  <div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "PageHeader"
-    }
+export default {
+  name: 'PageHeader'
+}
 </script>
 
 <style scoped>
