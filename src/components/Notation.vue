@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="PageHeader">
+notion
   </div>
 </template>
 

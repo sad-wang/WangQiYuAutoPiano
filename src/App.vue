@@ -1,10 +1,8 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <PageHeader/>
+    <Notation/>
+    <Piano/>
   </div>
 </template>
 
@@ -30,3 +28,18 @@
   }
 }
 </style>
+
+<script>
+import PageHeader from '@/components/PageHeader.vue'
+import Notation from '@/components/Notation.vue'
+import Piano from '@/components/Piano.vue'
+
+export default {
+  name: 'Home',
+  components: {
+    PageHeader,
+    Notation,
+    Piano
+  }
+}
+</script>

@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="PageHeader">
+piano
   </div>
 </template>
 
