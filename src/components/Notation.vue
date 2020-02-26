@@ -1,6 +1,5 @@
 <template>
-  <div class="PageHeader">
-notion
+  <div class="Notation">
   </div>
 </template>
 
@@ -10,6 +9,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.Notation{
+  flex: 1;
+  border: 1px solid yellow;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="PageHeader">
+  <div class="Piano">
 piano
   </div>
 </template>
@@ -10,6 +10,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .Piano{
+    flex: 1.5;
+    border: 1px solid red;
+  }
 </style>
