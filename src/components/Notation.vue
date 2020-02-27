@@ -12,6 +12,6 @@ export default {
 <style scoped lang="scss">
 .Notation{
   flex: 1;
-  border: 1px solid yellow;
+  background-color: #D3D9DF;
 }
 </style>
