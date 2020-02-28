@@ -9,42 +9,44 @@
           <div class="block">
             <div class="top"></div>
           </div>
-          <div id="p-wrapper">
-            <ul id="piano">
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div><span></span></li>
-              <li><div class="anchor"></div></li>
-            </ul>
-          </div>
+          <div class="keys"></div>
+<!--          <div id="p-wrapper">-->
+<!--            <ul id="piano">-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div><span></span></li>-->
+<!--              <li><div class="anchor"></div></li>-->
+<!--            </ul>-->
+<!--          </div>-->
           <div class="block">
             <div class="top"></div>
           </div>
@@ -65,7 +67,6 @@ export default {
 <style scoped lang="scss">
   .Piano{
     background-color: #D3D9DF;
-    flex: 1.5;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -75,88 +76,49 @@ export default {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      margin: 15px 30px;
-      height: 445px;
-      width: 100%;
+      height: 430px;
+      width: 1380px;
       .wooden{
-        width: 35px;
+        width: 36px;
         background-image: linear-gradient(to bottom right, #281c18, #180e0c);
         height: 100%;
       }
       .main{
-        flex: 1;
-        height: 96%;
+        height: 98%;
         background-color: #2c2b2c;
         .button-wrapper{
           height: 150px;
           background-color: #2e2f2f;
-          width: 100%;
+          width: 1308px;
         }
         .space{
           height: 36px;
-          width: 100%;
+          width: 1308px;
           background-color: #262729;
           box-shadow: 0px -5px 2px #2a2829;
         }
-        /*.keys-wrapper{*/
-        /*  display: flex;*/
-        /*  flex-direction: row;*/
-        /*  height: 214px;*/
-        /*  width: 100%;*/
-        /*  position: relative;*/
-        /*  .block{*/
-        /*    background-color: #2e2f31;*/
-        /*    .top{*/
-        /*      background-color: #2e2f2f;*/
-        /*      height: 15px;*/
-        /*      width: 56px;*/
-        /*      border: 2px solid #2a2829;*/
-        /*      box-shadow: 0px 2px 15px #2a2829;*/
-        /*    }*/
-        /*  }*/
-        /*  .keys{*/
-        /*    flex: 1;*/
-        /*    border-top: #0d0d10 15px solid;*/
-        /*    display: flex;*/
-        /*    flex-direction: row;*/
-        /*    .key{*/
-        /*      flex: 1;*/
-        /*      background-color: #dedee3;*/
-        /*      border-bottom-left-radius: 5px;*/
-        /*      border-bottom-right-radius: 5px;*/
-        /*      height: 100%;*/
-        /*      border-right: #595b60 1px solid;*/
-        /*      border-left: #1b1c1d 1px solid;*/
-        /*    }*/
-        /*  }*/
-        /*}*/
+        .keys-wrapper{
+          height: 210px;
+          width: 1308px;
+          background-color: #2e2f31;
+          .block{
+            width: 58px;
+            height: 210px;
+            .top{
+              height: 15px;
+              width: 58px;
+              background-color: #2e2f2f ;
+            }
+          }
+        }
       }
     }
   }
-  a {
-    color:indigo;
-    text-decoration:none;
-  }
-  /* Piano Wrapper */
   #p-wrapper {
-    background:#000;
-    background:-webkit-linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
-    background:-moz-linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
-    background:-ms-linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
-    background:-o-linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
-    background:linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
-    width:1300px;
+    width:100%;
     position:relative;
     left:-20px;
-    -webkit-box-shadow:0 2px 0px #666,0 3px 0px #555,0 4px 0px #444,0 6px 6px #000,inset 0 -1px 1px rgba(255,255,255,0.5),inset 0 -4px 5px #000;
-    -moz-box-shadow:0 2px 0px #666,0 3px 0px #555,0 4px 0px #444,0 6px 6px #000,inset 0 -1px 1px rgba(255,255,255,0.5),inset 0 -4px 5px #000;
-    box-shadow:0 2px 0px #666,0 3px 0px #555,0 4px 0px #444,0 6px 6px #000,inset 0 -1px 1px rgba(255,255,255,0.5),inset 0 -4px 5px #000;
-    border:2px solid #333;
-    -webkit-border-radius:0 0 5px 5px;
-    -moz-border-radius:0 0 5px 5px;
     border-radius:0 0 5px 5px;
-    -webkit-animation:taufik 2s;
-    -moz-animation:taufik 2s;
     animation:taufik 2s;
   }
 
