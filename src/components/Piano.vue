@@ -1,7 +1,7 @@
 <template>
   <div class="Piano">
     <div class="piano">
-      <div class="wooden"></div>
+      <div class="wooden wooden-left"></div>
       <div class="main">
         <div class="button-wrapper"></div>
         <div class="space"></div>
@@ -47,43 +47,6 @@
             <li><div class="white-key"></div><div class="black-key"></div></li>
             <li><div class="white-key"></div></li>
           </div>
-<!--          <div id="p-wrapper">-->
-<!--            <ul id="piano">-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div><span></span></li>-->
-<!--              <li><div class="anchor"></div></li>-->
-<!--            </ul>-->
-<!--          </div>-->
           <div class="block">
             <div class="top"></div>
           </div>
@@ -108,6 +71,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 20px 0;
     .piano{
       display: flex;
       flex-direction: row;
@@ -119,10 +83,16 @@ export default {
         width: 36px;
         background-image: linear-gradient(to bottom right, #281c18, #180e0c);
         height: 100%;
+        box-shadow: #4a4d51 10px 5px 7px ;
+      }
+      .wooden-left{
+        box-shadow: #080808 5px 2gapx 7px ;
+        z-index: 1;
       }
       .main{
         height: 98%;
         background-color: #2c2b2c;
+        box-shadow: #4a4d51 10px 5px 7px ;
         .button-wrapper{
           height: 150px;
           background-color: #2e2f2f;
