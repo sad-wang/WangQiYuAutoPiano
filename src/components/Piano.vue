@@ -10,114 +10,42 @@
             <div class="top"></div>
           </div>
           <div class="keys">
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
-            <li>
-              <div class="black-key"></div>
-            </li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div><div class="black-key"></div></li>
+            <li><div class="white-key"></div></li>
           </div>
 <!--          <div id="p-wrapper">-->
 <!--            <ul id="piano">-->
@@ -212,6 +140,7 @@ export default {
           background-color: #2e2f31;
           display: flex;
           flex-direction: row;
+          box-shadow: #131418 7px 17px 5px ;
           .block{
             width: 58px;
             height: 207px;
@@ -227,13 +156,36 @@ export default {
             border-top: 15px solid #0d0d10;
             li{
               display: inline-block;
-              width: calc(1192px / 36);
-              height: 195px;
-              background-color: #dfdfe4;
-              border-right: 1px #0b0b0c solid;
-              border-left: 1px #2a2b2c  solid;
-              border-bottom-left-radius: 7px;
-              border-bottom-right-radius: 7px;
+              position: relative;
+              .white-key{
+                width: calc(1192px / 36);
+                height: 195px;
+                background-color: #dfdfe4;
+                border-right: 1px #0b0b0c solid;
+                border-left: 1px #2a2b2c  solid;
+                border-bottom-left-radius: 7px;
+                border-bottom-right-radius: 7px;
+              }
+              .black-key{
+                position: absolute;
+                width: 18px;
+                height: 135px;
+                left: -10px;
+                top:0;
+                background-image: linear-gradient(to bottom, #101112 0%, #1b2127 10%, #1b2127 10%);
+                border-top: #1a1e25 5px solid;
+                border-left: #232223 4px solid;
+                border-bottom: #3e3e40 13px solid;
+                border-right: 5px #010203 solid;
+                box-shadow: #364b62 10px 2px 5px ;
+              }
+              .black-key:hover{
+                border-top: #1a1e25 8px solid;
+                border-left: #232223 4px solid;
+                border-bottom: #3e3e40 8px solid;
+                border-right: 5px #010203 solid;
+                box-shadow: #364b62 5px 2px 5px ;
+              }
             }
           }
         }
