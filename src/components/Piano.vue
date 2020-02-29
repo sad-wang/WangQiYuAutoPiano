@@ -9,7 +9,116 @@
           <div class="block">
             <div class="top"></div>
           </div>
-          <div class="keys"></div>
+          <div class="keys">
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+            <li>
+              <div class="black-key"></div>
+            </li>
+          </div>
 <!--          <div id="p-wrapper">-->
 <!--            <ul id="piano">-->
 <!--              <li><div class="anchor"></div></li>-->
@@ -98,16 +207,33 @@ export default {
           box-shadow: 0px -5px 2px #2a2829;
         }
         .keys-wrapper{
-          height: 210px;
+          height: 207px;
           width: 1308px;
           background-color: #2e2f31;
+          display: flex;
+          flex-direction: row;
           .block{
             width: 58px;
-            height: 210px;
+            height: 207px;
             .top{
               height: 15px;
               width: 58px;
               background-color: #2e2f2f ;
+            }
+          }
+          .keys{
+            width: 1192px;
+            height: 207px;
+            border-top: 15px solid #0d0d10;
+            li{
+              display: inline-block;
+              width: calc(1192px / 36);
+              height: 195px;
+              background-color: #dfdfe4;
+              border-right: 1px #0b0b0c solid;
+              border-left: 1px #2a2b2c  solid;
+              border-bottom-left-radius: 7px;
+              border-bottom-right-radius: 7px;
             }
           }
         }
