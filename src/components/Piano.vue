@@ -91,6 +91,10 @@
               </div>
             </div>
           </div>
+          <div class="mapping">
+            <div class="mapping-button">
+            </div>
+          </div>
           <div class="button-square sustain">
             <div class="lamp"></div>
             <div class="point-wrapper">
@@ -351,7 +355,7 @@ export default {
             font-size: 11px;
             font-weight: bold;
             position: absolute;
-            top:40px;
+            top:-26px;
             z-index: 2;
           }
           .rec:before{
@@ -382,9 +386,10 @@ export default {
             content: 'METRO';
           }
           .button-square{
+            position: relative;
             margin-top: 30px;
             width: 51px;
-            height: 60px;
+            height: 57px;
             background-image: linear-gradient(to right bottom,#47484d,#424244);
             display: flex;
             flex-direction: column;
@@ -440,6 +445,56 @@ export default {
                   background-image: linear-gradient(to right bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
                 }
               }
+            }
+          }
+          .mapping:before{
+            content: 'MAPPING';
+            color: #c0c0c0;
+            font-size: 11px;
+            font-weight: bold;
+            position: absolute;
+            top:-26px;
+            z-index: 2;
+          }
+          .mapping{
+            margin-top: 30px;
+            margin-bottom: 4px;
+            height: 53px;
+            width: 53px;
+            background-image: linear-gradient(to right,#7b7b7d,#29333f);
+            border-radius: 50%;
+            box-shadow: #03070b 3px 2px 5px ;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            .mapping-button{
+              background-color: #d9dbe1;
+              width: 25px;
+              height: 25px;
+              border-radius: 50px;
+              border-top: 2px solid #84828c;
+              border-left: 3px solid #83838c;
+              border-bottom: 2px solid #393c41;
+              border-right: 1px solid #181c21;
+              box-shadow: #03070b 2px 1px 3px ;
+            }
+            .mapping-button:after{
+              position: absolute;
+              content: '';
+              border-style: solid;
+              border-width: 3px 0 3px 8px;
+              border-color: transparent transparent transparent #637184;
+              right: 9px;
+              bottom: 9px;
+              transform: rotate(50deg);
+            }
+            .mapping-button:hover:after{
+              right: 35px;
+              bottom: 9px;
+              transform: rotate(130deg);
+              border-color: transparent transparent transparent #fffbff;
             }
           }
         }
