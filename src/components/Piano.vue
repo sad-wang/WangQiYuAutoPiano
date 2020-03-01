@@ -211,6 +211,46 @@
               </div>
             </div>
           </div>
+          <div class="tempo-wrapper">
+            <div class="tempo-up">
+                <div class="point-wrapper">
+                  <div class="point-row">
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                  </div>
+                  <div class="point-row">
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                  </div>
+                  <div class="point-row">
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                  </div>
+                </div>
+            </div>
+            <div class="tempo-down">
+              <div class="point-wrapper">
+                <div class="point-row">
+                  <div class="point"></div>
+                  <div class="point"></div>
+                  <div class="point"></div>
+                </div>
+                <div class="point-row">
+                  <div class="point"></div>
+                  <div class="point"></div>
+                  <div class="point"></div>
+                </div>
+                <div class="point-row">
+                  <div class="point"></div>
+                  <div class="point"></div>
+                  <div class="point"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="button-square metro">
             <div class="lamp"></div>
             <div class="point-wrapper">
@@ -454,7 +494,16 @@ export default {
             font-weight: bold;
             position: absolute;
             top:-26px;
-            z-index: 2;
+          }
+          .mapping:after{
+            content: 'MAX';
+            color: #c0c0c0;
+            width: 70px;
+            font-size: 11px;
+            font-weight: bold;
+            position: absolute;
+            bottom: -20px;
+            left: -10px;
           }
           .mapping{
             margin-top: 30px;
@@ -480,6 +529,16 @@ export default {
               border-right: 1px solid #181c21;
               box-shadow: #03070b 2px 1px 3px ;
             }
+            .mapping-button:before{
+              content: 'REAL';
+              color: #c0c0c0;
+              width: 70px;
+              font-size: 11px;
+              font-weight: bold;
+              position: absolute;
+              bottom: -20px;
+              right: -50px;
+            }
             .mapping-button:after{
               position: absolute;
               content: '';
@@ -495,6 +554,120 @@ export default {
               bottom: 9px;
               transform: rotate(130deg);
               border-color: transparent transparent transparent #fffbff;
+            }
+
+            }
+          .tempo-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 68px;
+            height: 96px;
+
+            overflow: hidden;
+            border-radius: 50%;
+            .tempo-up {
+              position: relative;
+              overflow: hidden;
+              background: linear-gradient(to left, #6b696b, #4d4d52);
+              width: 68px;
+              height: 32px;
+              margin: 8px auto;
+              transform: rotate(180deg);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              .point-wrapper{
+                width: 18px;
+                height: 18px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                margin-top: -10px;
+                .point-row{
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-around;
+                  align-items: center;
+                  .point{
+                    width: 3px;
+                    height: 3px;
+                    border-radius: 50%;
+                    background-image: linear-gradient(to left bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
+                  }
+                }
+              }
+            }
+
+            .tempo-up:before, .tempo-up:after {
+              position: absolute;
+              content: '';
+            }
+
+            .tempo-up:before, .tempo-up:after {
+              border-left: 34px solid transparent;
+              border-right: 34px solid transparent;
+              border-bottom: 32px solid #2e2f2f;
+            }
+
+            .tempo-up:before {
+              margin-left: -34px;
+            }
+
+            .tempo-up:after {
+              margin-left: 34px;
+            }
+
+            .tempo-down {
+              position: relative;
+              overflow: hidden;
+              background: linear-gradient(to right, #6b696b, #4d4d52);
+              width: 68px;
+              height: 32px;
+              margin: 8px auto;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              .point-wrapper{
+                width: 18px;
+                height: 18px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                margin-top: -10px;
+                .point-row{
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-around;
+                  align-items: center;
+                  .point{
+                    width: 3px;
+                    height: 3px;
+                    border-radius: 50%;
+                    background-image: linear-gradient(to right bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
+                  }
+                }
+              }
+            }
+
+            .tempo-down:before, .tempo-down:after {
+              position: absolute;
+              content: '';
+            }
+
+            .tempo-down:before, .tempo-down:after {
+              border-left: 34px solid transparent;
+              border-right: 34px solid transparent;
+              border-bottom: 32px solid #2e2f2f;
+            }
+
+            .tempo-down:before {
+              margin-left: -34px;
+            }
+
+            .tempo-down:after {
+              margin-left: 34px;
             }
           }
         }
