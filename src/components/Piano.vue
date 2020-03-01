@@ -153,6 +153,13 @@
               </div>
             </div>
           </div>
+          <div class="screen-wrapper">
+            <div class="screen">
+              <div class="screen-inner">
+
+              </div>
+            </div>
+          </div>
           <div class="button-square auto">
             <div class="lamp"></div>
             <div class="point-wrapper">
@@ -668,6 +675,34 @@ export default {
 
             .tempo-down:after {
               margin-left: 34px;
+            }
+          }
+          .screen-wrapper{
+            width: 270px;
+            height: 110px;
+            border-radius: 2px;
+            border: 10px solid #36393f;
+            border-right-color: #2e3336;
+            border-bottom-color: #313439;
+            border-left-color: #363b42;
+            box-shadow: #292829 7px 3px 4px,0px 0px 4px #414347,0px 2px 4px #9d9a95;
+            .screen{
+              border: 10px solid;
+              border-image: linear-gradient(#1e252e, #101821) 10;
+              border-right: 17px solid;
+              border-left: 17px solid;
+              width: 246px;
+              height: 89px;
+              .screen-inner{
+                border-radius: 3px;
+                border: 3px solid #949aa5;
+                border-right-color: #9c9aa5;
+                border-bottom-color: #94969c;
+                border-left:5px solid #999ba2;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(#fffbf7 0%,#d3d0ce 15%,#c0bfc0 50%,#d3d0ce 85%,#fffbf7 100%);
+              }
             }
           }
         }
