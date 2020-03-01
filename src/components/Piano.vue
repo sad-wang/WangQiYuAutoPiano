@@ -348,7 +348,7 @@ export default {
           height: 150px;
           background-color: #2e2f2f;
           width: 1308px;
-          box-shadow: #4a4d51 10px 10px 7px;
+          box-shadow: #4a4d51 0px 4px 7px;
           position: relative;
           .button-square:before{
             color: #c0c0c0;
