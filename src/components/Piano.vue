@@ -3,7 +3,269 @@
     <div class="piano">
       <div class="wooden wooden-left"></div>
       <div class="main">
-        <div class="button-wrapper"></div>
+        <div class="button-wrapper">
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="button-square ">
+            <div class="lamp"></div>
+            <div class="point-wrapper">
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+              <div class="point-row">
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+                <div class="point"></div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="space"></div>
         <div class="keys-wrapper">
           <div class="block">
@@ -86,17 +348,81 @@ export default {
         box-shadow: #4a4d51 10px 5px 7px ;
       }
       .wooden-left{
-        box-shadow: #080808 5px 2gapx 7px ;
+        box-shadow: #080808 5px 2px 7px ;
         z-index: 1;
+        position: relative;
+      }
+      .wooden-left:after{
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 42px 0 136px 24px;
+        border-color: transparent transparent transparent #080b0d90;
+        top:146px;
+        right: -28px;
       }
       .main{
         height: 98%;
         background-color: #2c2b2c;
         box-shadow: #4a4d51 10px 5px 7px ;
         .button-wrapper{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
           height: 150px;
           background-color: #2e2f2f;
           width: 1308px;
+          box-shadow: #4a4d51 10px 10px 7px ;
+          .button-square{
+            width: 51px;
+            height: 60px;
+            background-image: linear-gradient(to right bottom,#47484d,#424244);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 2px;
+            z-index: 1;
+            box-shadow: #03070b 5px 0px 3px ;
+            .lamp{
+              width: 11px;
+              height: 11px;
+              border-radius: 50%;
+              background-image: linear-gradient(to right bottom,#3a1f19,#382219);
+              position: relative;
+              margin-bottom: 5px;
+            }
+            .lamp:after{
+              content: '';
+              position: absolute;
+              left: 3px;
+              top: 4px;
+              height: 2px;
+              width: 2px;
+              border-radius: 50%;
+              background-image: linear-gradient(to left bottom,#796452,#fde5bb) ;
+            }
+            .point-wrapper{
+              width: 24px;
+              height: 24px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              .point-row{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                .point{
+                  width: 4px;
+                  height: 4px;
+                  border-radius: 50%;
+                  background-image: linear-gradient(to right bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
+                }
+              }
+            }
+          }
         }
         .space{
           height: 36px;
@@ -105,15 +431,15 @@ export default {
           box-shadow: 0px -5px 2px #2a2829;
         }
         .keys-wrapper{
-          height: 207px;
+          height: 210px;
           width: 1308px;
           background-color: #2e2f31;
           display: flex;
           flex-direction: row;
-          box-shadow: #131418 7px 17px 5px ;
+          box-shadow: #131418 30px 15px 5px ;
           .block{
             width: 58px;
-            height: 207px;
+            height: 210px;
             .top{
               height: 15px;
               width: 58px;
@@ -176,7 +502,7 @@ export default {
                 border-left: #232223 4px solid;
                 border-bottom: #3e3e40 8px solid;
                 border-right: 5px #010203 solid;
-                box-shadow: #364b62 15px 2px 5px ;
+                box-shadow: #364b62 13px 2px 5px ;
               }
             }
           }
