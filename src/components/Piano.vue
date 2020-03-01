@@ -4,7 +4,7 @@
       <div class="wooden wooden-left"></div>
       <div class="main">
         <div class="button-wrapper">
-          <div class="button-square ">
+          <div class="button-square rec">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square ">
+          <div class="button-square play">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square ">
+          <div class="button-square keys">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -91,7 +91,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square ">
+          <div class="button-square sustain">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -120,7 +120,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square ">
+          <div class="button-square sounds">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -149,7 +149,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square ">
+          <div class="button-square auto">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -178,7 +178,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square ">
+          <div class="button-square songs">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -207,36 +207,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square ">
-            <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
-          </div>
-          <div class="button-square ">
+          <div class="button-square metro">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -373,8 +344,45 @@ export default {
           height: 150px;
           background-color: #2e2f2f;
           width: 1308px;
-          box-shadow: #4a4d51 10px 10px 7px ;
+          box-shadow: #4a4d51 10px 10px 7px;
+          position: relative;
+          .button-square:before{
+            color: #c0c0c0;
+            font-size: 11px;
+            font-weight: bold;
+            position: absolute;
+            top:40px;
+            z-index: 2;
+          }
+          .rec:before{
+            color: #9d3333;
+            content: 'REC';
+            font-weight: 900;
+          }
+          .play:before{
+            content: 'PLAY';
+          }
+          .keys:before{
+            content: 'KEYS';
+          }
+          .sustain:before{
+            content: 'SUSTAIN';
+          }
+          .sounds:before{
+            content: 'SOUNDS';
+          }
+          .auto:before{
+            content: 'AUTO';
+            color: #7f95ac;
+          }
+          .songs:before{
+            content: 'SONGS';
+          }
+          .metro:before{
+            content: 'METRO';
+          }
           .button-square{
+            margin-top: 30px;
             width: 51px;
             height: 60px;
             background-image: linear-gradient(to right bottom,#47484d,#424244);
@@ -384,14 +392,25 @@ export default {
             align-items: center;
             border-radius: 2px;
             z-index: 1;
-            box-shadow: #03070b 5px 0px 3px ;
+            box-shadow: #03070b 5px 1px 3px ;
             .lamp{
-              width: 11px;
-              height: 11px;
+              width: 12px;
+              height: 12px;
               border-radius: 50%;
               background-image: linear-gradient(to right bottom,#3a1f19,#382219);
               position: relative;
               margin-bottom: 5px;
+              border: 1px solid #3e3738;
+            }
+            .lamp:hover{
+              width: 12px;
+              height: 12px;
+              border: 1px solid #3e3738;
+              border-radius: 50%;
+              background-image: linear-gradient(to right bottom,#a50727,#84061e);
+              margin-bottom: 5px;
+              z-index: 2;
+              box-shadow: #84061e90 0 0 15px;
             }
             .lamp:after{
               content: '';
