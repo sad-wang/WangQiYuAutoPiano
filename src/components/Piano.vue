@@ -595,15 +595,15 @@ export default {
               border-right: 4px #191d21 solid;
               position: relative;
               .point-wrapper{
-                left: 22px;
-                top: 5px;
+                left: 24px;
+                top: 6px;
               }
             }
             .point-wrapper{
               position: relative;
               transform: rotate(45deg);
-              width: 18px;
-              height: 18px;
+              width: 15px;
+              height: 15px;
               display: flex;
               flex-direction: column;
               justify-content: space-between;
@@ -613,8 +613,8 @@ export default {
                 justify-content: space-between;
                 align-items: center;
                 .point{
-                  width: 4px;
-                  height: 4px;
+                  width: 3px;
+                  height: 3px;
                   border-radius: 50%;
                   background-image: linear-gradient(to right bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
                 }
@@ -629,8 +629,8 @@ export default {
               transform: rotate(135deg)  translateY(-52px) translateX(-45px);
               border-top: 4px #191d21 solid;
               .point-wrapper{
-                left: 26px;
-                top: 5px;
+                left: 27px;
+                top: 6px;
               }
             }
           }
