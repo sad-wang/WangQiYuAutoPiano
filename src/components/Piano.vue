@@ -599,6 +599,9 @@ export default {
                 top: 6px;
               }
             }
+            .tempo-up:hover{
+              background: linear-gradient(45deg, transparent 50%,#4d4e51 50%,#3f4145 100%);
+            }
             .point-wrapper{
               position: relative;
               transform: rotate(45deg);
@@ -632,6 +635,9 @@ export default {
                 left: 27px;
                 top: 6px;
               }
+            }
+            .tempo-down:hover{
+              background: linear-gradient(45deg, transparent 50%,#3f4145 50%,#4d4e51 100%);
             }
           }
           .screen-wrapper{
