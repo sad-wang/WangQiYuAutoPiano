@@ -124,6 +124,13 @@
               </div>
             </div>
           </div>
+          <div class="screen-wrapper">
+            <div class="screen">
+              <div class="screen-inner">
+
+              </div>
+            </div>
+          </div>
           <div class="button-square sounds">
             <div class="lamp"></div>
             <div class="point-wrapper">
@@ -150,13 +157,6 @@
                 <div class="point"></div>
                 <div class="point"></div>
                 <div class="point"></div>
-              </div>
-            </div>
-          </div>
-          <div class="screen-wrapper">
-            <div class="screen">
-              <div class="screen-inner">
-
               </div>
             </div>
           </div>
@@ -388,6 +388,7 @@ export default {
         background-color: #2c2b2c;
         box-shadow: #4a4d51 10px 5px 7px ;
         .button-wrapper{
+          padding: 50px;
           display: flex;
           flex-direction: row;
           justify-content: space-around;
@@ -565,8 +566,8 @@ export default {
 
             }
           .tempo-wrapper:before{
-            border-top: 2px solid #1a1e21;
-            border-bottom: 2px solid #1a1e21;
+            border-top: 2px solid #1a1e2190;
+            border-bottom: 2px solid #1a1e2190;
             content: 'TEMPO';
             color: #c0c0c0;
             width: 64px;
@@ -580,7 +581,7 @@ export default {
             top: 31px;
           }
           .tempo-wrapper {
-            margin-top: 30px;
+            margin-top: 20px;
             width: 68px;
             height: 88px;
             position: relative;
