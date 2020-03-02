@@ -564,117 +564,73 @@ export default {
             }
 
             }
+          .tempo-wrapper:before{
+            border-top: 2px solid #1a1e21;
+            border-bottom: 2px solid #1a1e21;
+            content: 'TEMPO';
+            color: #c0c0c0;
+            width: 64px;
+            height: 19px;
+            text-align: center;
+            line-height: 19px;
+            font-size: 11px;
+            font-weight: bold;
+            position: absolute;
+            z-index: 1;
+            top: 31px;
+          }
           .tempo-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
+            margin-top: 30px;
             width: 68px;
-            height: 96px;
-
-            overflow: hidden;
-            border-radius: 50%;
+            height: 88px;
+            position: relative;
             .tempo-up {
+              width: 50px;
+              height: 50px;
+              background: linear-gradient(45deg, transparent 50%,#686668 50%,#4a4a4d 100%);
+              border-radius: 5px;
+              transform-origin:bottom right;
+              transform: rotate(-45deg) translateY(0px) translateX(27px);
+              border-right: 4px #191d21 solid;
               position: relative;
-              overflow: hidden;
-              background: linear-gradient(to left, #6b696b, #4d4d52);
-              width: 68px;
-              height: 32px;
-              margin: 8px auto;
-              transform: rotate(180deg);
-              display: flex;
-              justify-content: center;
-              align-items: center;
               .point-wrapper{
-                width: 18px;
-                height: 18px;
+                left: 22px;
+                top: 5px;
+              }
+            }
+            .point-wrapper{
+              position: relative;
+              transform: rotate(45deg);
+              width: 18px;
+              height: 18px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              .point-row{
                 display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                margin-top: -10px;
-                .point-row{
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-around;
-                  align-items: center;
-                  .point{
-                    width: 3px;
-                    height: 3px;
-                    border-radius: 50%;
-                    background-image: linear-gradient(to left bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
-                  }
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                .point{
+                  width: 4px;
+                  height: 4px;
+                  border-radius: 50%;
+                  background-image: linear-gradient(to right bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
                 }
               }
             }
-
-            .tempo-up:before, .tempo-up:after {
-              position: absolute;
-              content: '';
-            }
-
-            .tempo-up:before, .tempo-up:after {
-              border-left: 34px solid transparent;
-              border-right: 34px solid transparent;
-              border-bottom: 32px solid #2e2f2f;
-            }
-
-            .tempo-up:before {
-              margin-left: -34px;
-            }
-
-            .tempo-up:after {
-              margin-left: 34px;
-            }
-
             .tempo-down {
-              position: relative;
-              overflow: hidden;
-              background: linear-gradient(to right, #6b696b, #4d4d52);
-              width: 68px;
-              height: 32px;
-              margin: 8px auto;
-              display: flex;
-              justify-content: center;
-              align-items: center;
+              width: 50px;
+              height: 50px;
+              background: linear-gradient(45deg, transparent 50%,#4a4a4d 50%,#686668 100%);
+              border-radius: 5px;
+              transform-origin:left top;
+              transform: rotate(135deg)  translateY(-52px) translateX(-45px);
+              border-top: 4px #191d21 solid;
               .point-wrapper{
-                width: 18px;
-                height: 18px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                margin-top: -10px;
-                .point-row{
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-around;
-                  align-items: center;
-                  .point{
-                    width: 3px;
-                    height: 3px;
-                    border-radius: 50%;
-                    background-image: linear-gradient(to right bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
-                  }
-                }
+                left: 26px;
+                top: 5px;
               }
-            }
-
-            .tempo-down:before, .tempo-down:after {
-              position: absolute;
-              content: '';
-            }
-
-            .tempo-down:before, .tempo-down:after {
-              border-left: 34px solid transparent;
-              border-right: 34px solid transparent;
-              border-bottom: 32px solid #2e2f2f;
-            }
-
-            .tempo-down:before {
-              margin-left: -34px;
-            }
-
-            .tempo-down:after {
-              margin-left: 34px;
             }
           }
           .screen-wrapper{
