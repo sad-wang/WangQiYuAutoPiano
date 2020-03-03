@@ -433,6 +433,18 @@ export default {
           .metro:before{
             content: 'METRO';
           }
+          .button-square:active{
+            .lamp{
+              width: 12px;
+              height: 12px;
+              border: 1px solid #3e3738;
+              border-radius: 50%;
+              background-image: linear-gradient(to right bottom,#a50727,#84061e);
+              margin-bottom: 5px;
+              z-index: 2;
+              box-shadow: #84061e90 0 0 15px;
+            }
+          }
           .button-square{
             position: relative;
             margin-top: 30px;
@@ -454,16 +466,6 @@ export default {
               position: relative;
               margin-bottom: 5px;
               border: 1px solid #3e3738;
-            }
-            .lamp:hover{
-              width: 12px;
-              height: 12px;
-              border: 1px solid #3e3738;
-              border-radius: 50%;
-              background-image: linear-gradient(to right bottom,#a50727,#84061e);
-              margin-bottom: 5px;
-              z-index: 2;
-              box-shadow: #84061e90 0 0 15px;
             }
             .lamp:after{
               content: '';
@@ -513,6 +515,14 @@ export default {
             bottom: -20px;
             left: -10px;
           }
+          .mapping:active{
+            .mapping-button:after{
+              right: 35px;
+              bottom: 9px;
+              transform: rotate(130deg);
+              border-color: transparent transparent transparent #fffbff;
+            }
+          }
           .mapping{
             margin-top: 30px;
             margin-bottom: 4px;
@@ -557,17 +567,9 @@ export default {
               bottom: 9px;
               transform: rotate(50deg);
             }
-            .mapping-button:hover:after{
-              right: 35px;
-              bottom: 9px;
-              transform: rotate(130deg);
-              border-color: transparent transparent transparent #fffbff;
-            }
-
             }
           .tempo-wrapper:before{
-            border-top: 2px solid #1a1e2190;
-            border-bottom: 2px solid #1a1e2190;
+            border-top: 3px solid #1a1e2190;
             content: 'TEMPO';
             color: #c0c0c0;
             width: 64px;
@@ -577,8 +579,9 @@ export default {
             font-size: 11px;
             font-weight: bold;
             position: absolute;
-            z-index: 1;
             top: 31px;
+            z-index: 10;
+            padding-bottom: 10px;
           }
           .tempo-wrapper {
             margin-top: 20px;
@@ -589,17 +592,18 @@ export default {
               width: 50px;
               height: 50px;
               background: linear-gradient(45deg, transparent 50%,#686668 50%,#4a4a4d 100%);
-              border-radius: 5px;
+              border-radius: 7px;
               transform-origin:bottom right;
               transform: rotate(-45deg) translateY(0px) translateX(27px);
               border-right: 4px #191d21 solid;
               position: relative;
+              z-index: 2;
               .point-wrapper{
                 left: 24px;
                 top: 6px;
               }
             }
-            .tempo-up:hover{
+            .tempo-up:active{
               background: linear-gradient(45deg, transparent 50%,#4d4e51 50%,#3f4145 100%);
             }
             .point-wrapper{
@@ -627,16 +631,17 @@ export default {
               width: 50px;
               height: 50px;
               background: linear-gradient(45deg, transparent 50%,#4a4a4d 50%,#686668 100%);
-              border-radius: 5px;
+              border-radius: 7px;
               transform-origin:left top;
               transform: rotate(135deg)  translateY(-52px) translateX(-45px);
               border-top: 4px #191d21 solid;
+              z-index: 1;
               .point-wrapper{
                 left: 27px;
                 top: 6px;
               }
             }
-            .tempo-down:hover{
+            .tempo-down:active{
               background: linear-gradient(45deg, transparent 50%,#3f4145 50%,#4d4e51 100%);
             }
           }
