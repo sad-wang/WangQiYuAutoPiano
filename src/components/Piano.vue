@@ -318,13 +318,11 @@ export default {
     }
   },
   mounted () {
-    console.log(22)
   },
   methods: {
     play (value) {
       var sampler = new Tone.Sampler({ A2: `/piano/${value}.mp3` }, () => {
         sampler.toDestination()
-        console.log(11)
         sampler.triggerAttackRelease('A2', '1n')
       })
     }
