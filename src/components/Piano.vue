@@ -293,43 +293,8 @@
           <div class="block">
             <div class="top"></div>
           </div>
-          <div class="keys">
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div><div class="black-key"></div></li>
-            <li><div class="white-key"></div></li>
+          <div class="keys" v-for="item in keysConfig" :key="item.value">
+            <li><div class="white-key" v-on:click="play(item.value)"></div><div class="black-key"  v-on:click="play(item.subValue)" v-if="item.subValue"></div></li>
           </div>
           <div class="block">
             <div class="top"></div>
@@ -343,8 +308,21 @@
 </template>
 
 <script>
+import * as Tone from 'tone'
+import keysConfig from '../config/keysConfig'
+const synth = new Tone.Synth().toDestination()
 export default {
-  name: 'Piano'
+  name: 'Piano',
+  data () {
+    return {
+      keysConfig: keysConfig
+    }
+  },
+  methods: {
+    play: function (value) {
+      synth.triggerAttackRelease(value, '9n')
+    }
+  }
 }
 </script>
 
