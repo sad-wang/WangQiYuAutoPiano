@@ -32,7 +32,7 @@ export default {
 <style scoped lang="scss">
   @font-face{
     font-family: 'Mr-De-Haviland-Regular';
-    src : url('../../static/fonts/Mr-De-Haviland-Regular.ttf');
+    src : url('../assets/fonts/Mr-De-Haviland-Regular.ttf');
   }
   .icon {
     width: 1em; height: 1em;

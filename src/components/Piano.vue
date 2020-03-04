@@ -310,7 +310,6 @@
 <script>
 import * as Tone from 'tone'
 import keysConfig from '../config/keysConfig'
-const synth = new Tone.Synth().toDestination()
 export default {
   name: 'Piano',
   data () {
@@ -318,9 +317,16 @@ export default {
       keysConfig: keysConfig
     }
   },
+  mounted () {
+    console.log(22)
+  },
   methods: {
-    play: function (value) {
-      synth.triggerAttackRelease(value, '9n')
+    play (value) {
+      var sampler = new Tone.Sampler({ A2: `/piano/${value}.mp3` }, () => {
+        sampler.toDestination()
+        console.log(11)
+        sampler.triggerAttackRelease('A2', '1n')
+      })
     }
   }
 }
