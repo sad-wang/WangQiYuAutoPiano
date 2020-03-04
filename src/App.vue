@@ -30,11 +30,15 @@ import Notation from '@/components/Notation.vue'
 import Piano from '@/components/Piano.vue'
 
 export default {
-  name: 'Home',
+  name: 'App',
   components: {
     PageHeader,
     Notation,
     Piano
+  },
+  data () {
+    return {
+    }
   }
 }
 </script>
