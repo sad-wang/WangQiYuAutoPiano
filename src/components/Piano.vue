@@ -321,7 +321,7 @@ export default {
   },
   methods: {
     play (value) {
-      var sampler = new Tone.Sampler({ A2: `/dist/piano/${value}.mp3` }, () => {
+      var sampler = new Tone.Sampler({ A2: `/WangQiYuAutoPiano/dist/piano/${value}.mp3` }, () => {
         sampler.toDestination()
         sampler.triggerAttackRelease('A2', '1n')
       })
