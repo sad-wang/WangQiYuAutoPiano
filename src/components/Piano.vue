@@ -310,6 +310,7 @@
 <script>
 import pianoConfig from '../config/pianoConfig'
 import samplerInit from '../lib/samplerInit'
+import keysMatch from '../config/keysMatch'
 import whiteKey from '@/components/whiteKey.vue'
 import * as Tone from 'tone'
 
@@ -321,7 +322,8 @@ export default {
   data () {
     return {
       pianoConfig: pianoConfig,
-      on: 'a'
+      on: [],
+      keysMatch: keysMatch.max
     }
   },
   created () {
@@ -332,10 +334,17 @@ export default {
         sampler.triggerAttackRelease(value, '2n')
       }
     }.bind(this), baseUrl)
+    console.log(this.keysMatch)
   },
   mounted () {
     document.addEventListener('keydown', (e) => {
-      this.on = e.key === 'q' ? 'c2' : ''
+      if (!this.on.includes(e.key)) {
+        this.play(this.keysMatch[e.key])
+        this.on.push(e.key)
+      }
+    })
+    document.addEventListener('keyup', (e) => {
+      this.on = this.arrayRemove(this.on, e.key)
     })
   },
   methods: {
@@ -343,6 +352,11 @@ export default {
     },
     play (value) {
       this.playNode(value.replace('s', '#'))
+    },
+    arrayRemove (arr, value) {
+      return arr.filter((ele) => {
+        return (ele !== value)
+      })
     }
   }
 }
