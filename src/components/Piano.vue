@@ -294,7 +294,10 @@
             <div class="top"></div>
           </div>
           <div class="keys" v-for="item in pianoConfig" :key="item.value">
-            <li><whiteKey v-bind:x="item.value===on"  @play="play(item.value)" /><div class="black-key"  @mousedown="play(item.subValue)" v-if="item.subValue"></div></li>
+            <li>
+              <key v-bind:type="item.value" v-bind:down="down.includes(item.value)"  @play="play(item.value)" />
+              <key v-if="item.subValue" v-bind:type="false" v-bind:down="down.includes(item.subValue)"  @play="play(item.subValue)" />
+            </li>
           </div>
           <div class="block">
             <div class="top"></div>
@@ -311,18 +314,19 @@
 import pianoConfig from '../config/pianoConfig'
 import samplerInit from '../lib/samplerInit'
 import keysMatch from '../config/keysMatch'
-import whiteKey from '@/components/whiteKey.vue'
+import key from '@/components/key.vue'
 import * as Tone from 'tone'
 
 export default {
   name: 'Piano',
   components: {
-    whiteKey
+    key
   },
   data () {
     return {
       pianoConfig: pianoConfig,
       on: [],
+      down: [],
       keysMatch: keysMatch.max
     }
   },
@@ -334,17 +338,28 @@ export default {
         sampler.triggerAttackRelease(value, '2n')
       }
     }.bind(this), baseUrl)
-    console.log(this.keysMatch)
   },
   mounted () {
     document.addEventListener('keydown', (e) => {
-      if (!this.on.includes(e.key)) {
+      e.preventDefault()
+      if (!e.altKey && !this.on.includes(e.key)) {
         this.play(this.keysMatch[e.key])
         this.on.push(e.key)
+        this.down.push(this.keysMatch[e.key])
+      }
+      if (e.altKey) {
+        this.play(this.keysMatch['#' + e.key])
+        this.on.push('#' + e.key)
+        this.down.push(this.keysMatch['#' + e.key])
       }
     })
     document.addEventListener('keyup', (e) => {
       this.on = this.arrayRemove(this.on, e.key)
+      this.down = this.arrayRemove(this.down, this.keysMatch[e.key])
+      if (e.altKey) {
+        this.on = this.arrayRemove(this.on, '#' + e.key)
+        this.down = this.arrayRemove(this.down, this.keysMatch['#' + e.key])
+      }
     })
   },
   methods: {
@@ -718,33 +733,6 @@ export default {
               display: inline-block;
               position: relative;
               height: 198px;
-              .black-key{
-                position: absolute;
-                width: 18px;
-                height: 135px;
-                left: -10px;
-                top:0;
-                background-image: linear-gradient(to bottom, #101112 0%, #1b2127 10%, #1b2127 10%);
-                border-top: #1a1e25 5px solid;
-                border-left: #232223 4px solid;
-                border-bottom: #3e3e40 13px solid;
-                border-right: 5px #010203 solid;
-                box-shadow: #364b62 10px 2px 5px ;
-              }
-              .black-key:hover{
-                border-top: #1a1e25 8px solid;
-                border-left: #232223 4px solid;
-                border-bottom: #3e3e40 8px solid;
-                border-right: 5px #010203 solid;
-                box-shadow: #364b62 5px 2px 5px ;
-              }
-              .black-key:active{
-                border-top: #1a1e25 8px solid;
-                border-left: #232223 4px solid;
-                border-bottom: #3e3e40 8px solid;
-                border-right: 5px #010203 solid;
-                box-shadow: #364b62 13px 2px 5px ;
-              }
             }
           }
         }
