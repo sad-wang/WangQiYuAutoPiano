@@ -10,13 +10,11 @@ export default {
   },
   data () {
     return {
-      on: false
     }
   },
   computed: {
     isActive: {
       get: function () {
-        this.$emit('play')
         return this.x || this.on
       },
       set: function () {
@@ -29,10 +27,8 @@ export default {
   methods: {
     play () {
       this.$emit('play')
-      this.on = true
     },
     mouseEnd () {
-      this.on = false
     }
   }
 }

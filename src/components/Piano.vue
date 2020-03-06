@@ -308,9 +308,11 @@
 </template>
 
 <script>
-import * as Tone from 'tone'
 import pianoConfig from '../config/pianoConfig'
+import samplerInit from '../lib/samplerInit'
 import whiteKey from '@/components/whiteKey.vue'
+import * as Tone from 'tone'
+
 export default {
   name: 'Piano',
   components: {
@@ -322,17 +324,25 @@ export default {
       on: 'a'
     }
   },
+  created () {
+    const { files, baseUrl } = samplerInit.init()
+    const sampler = new Tone.Sampler(files, function () {
+      this.playNode = function (value) {
+        sampler.toDestination()
+        sampler.triggerAttackRelease(value, '2n')
+      }
+    }.bind(this), baseUrl)
+  },
   mounted () {
     document.addEventListener('keydown', (e) => {
       this.on = e.key === 'q' ? 'c2' : ''
     })
   },
   methods: {
+    playNode (value) {
+    },
     play (value) {
-      var sampler = new Tone.Sampler({ a2: `/piano/${value}.mp3` }, () => {
-        sampler.toDestination()
-        sampler.triggerAttackRelease('a2', '1n')
-      })
+      this.playNode(value.replace('s', '#'))
     }
   }
 }
