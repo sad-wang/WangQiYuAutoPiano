@@ -131,7 +131,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square sounds">
+            <div class="button-square sounds">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -293,8 +293,8 @@
           <div class="block">
             <div class="top"></div>
           </div>
-          <div class="keys" v-for="item in keysConfig" :key="item.value">
-            <li><div class="white-key" v-on:click="play(item.value)"></div><div class="black-key"  v-on:click="play(item.subValue)" v-if="item.subValue"></div></li>
+          <div class="keys" v-for="item in pianoConfig" :key="item.value">
+            <li><whiteKey v-bind:x="item.value===on"  @play="play(item.value)" /><div class="black-key"  @mousedown="play(item.subValue)" v-if="item.subValue"></div></li>
           </div>
           <div class="block">
             <div class="top"></div>
@@ -309,21 +309,29 @@
 
 <script>
 import * as Tone from 'tone'
-import keysConfig from '../config/keysConfig'
+import pianoConfig from '../config/pianoConfig'
+import whiteKey from '@/components/whiteKey.vue'
 export default {
   name: 'Piano',
+  components: {
+    whiteKey
+  },
   data () {
     return {
-      keysConfig: keysConfig
+      pianoConfig: pianoConfig,
+      on: 'a'
     }
   },
   mounted () {
+    document.addEventListener('keydown', (e) => {
+      this.on = e.key === 'q' ? 'c2' : ''
+    })
   },
   methods: {
     play (value) {
-      var sampler = new Tone.Sampler({ A2: `/WangQiYuAutoPiano/dist/piano/${value}.mp3` }, () => {
+      var sampler = new Tone.Sampler({ a2: `/piano/${value}.mp3` }, () => {
         sampler.toDestination()
-        sampler.triggerAttackRelease('A2', '1n')
+        sampler.triggerAttackRelease('a2', '1n')
       })
     }
   }
@@ -686,29 +694,6 @@ export default {
               display: inline-block;
               position: relative;
               height: 198px;
-              .white-key{
-                width: calc(1192px / 36);
-                height: 195px;
-                background-color: #dfdfe4;
-                border-right: 1px #0b0b0c solid;
-                border-left: 1px #2a2b2c  solid;
-                border-bottom-left-radius: 6px;
-                border-bottom-right-radius: 6px;
-                position: relative;
-              }
-              .white-key:hover{
-                height: 198px;
-                border-right: 1px #0b0b0c solid;
-                border-left: 1px #2a2b2c  solid;
-              }
-              .white-key:hover:after{
-                content: '';
-                position: absolute;
-                border-style: solid;
-                border-width: 198px 0 0 9px;
-                border-color: transparent transparent transparent #62708499;
-                bottom: 0;
-              }
               .black-key{
                 position: absolute;
                 width: 18px;

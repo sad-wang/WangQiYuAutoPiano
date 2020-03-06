@@ -1,4 +1,4 @@
-const keysConfig = [
+const pianoConfig = [
   { value: 'c2' },
   { value: 'd2', subValue: 'cs2' },
   { value: 'e2', subValue: 'ds2' },
@@ -37,4 +37,4 @@ const keysConfig = [
   { value: 'c7' }
 ]
 
-export default keysConfig
+export default pianoConfig
