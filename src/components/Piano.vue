@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square keys">
+          <div class="button-square keys" :class="keysState?'active':''" @click="keysState=!keysState">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -127,11 +127,15 @@
           <div class="screen-wrapper">
             <div class="screen">
               <div class="screen-inner">
-
+                <div v-if="!soundsChoose">{{screenContent}}</div>
+                <div v-else class="lists">
+                  <li @click="switchSound('piano')">01 Piano</li>
+                  <li @click="switchSound('guitar')">02 Guitar</li>
+                </div>
               </div>
             </div>
           </div>
-          <div class="button-square sounds">
+          <div class="button-square sounds" :class="soundsChoose?'active':''" @click="soundsChoose = !soundsChoose">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -295,7 +299,10 @@
           </div>
           <div class="keys" v-for="item in pianoConfig" :key="item.value">
             <li>
+              <div v-if="keysState" class="whiteKeyValue" :class="`${findKey(mapping,item.value)}`.length > 2 ? 'small' : 'whiteKeyValue'">{{findKey(mapping,item.value)}}</div>
               <key v-bind:type="true" v-bind:down="down.includes(item.value)"  @play="play(item.value)" />
+              <div class="blackKeyValue" v-if="mappingState==='real'&&keysState" >{{findKey(mapping,item.subValue)}}</div>
+              <div class="blackKeyValue alt" v-if="mappingState==='max'&&item.subValue&&keysState" >{{`${findKey(mapping,item.subValue)}`.replace('#','')}}</div>
               <key v-show="item.subValue" v-bind:type="false" v-bind:down="down.includes(item.subValue)"  @play="play(item.subValue)" />
             </li>
           </div>
@@ -330,10 +337,13 @@ export default {
       on: [],
       down: [],
       mapping: keysMatch.real,
+      keysState: false,
       mappingState: 'real',
       sustainState: false,
       tempo: 0,
-      metroState: false
+      metroState: false,
+      screenContent: 'PLAY',
+      soundsChoose: false
     }
   },
   created () {
@@ -372,12 +382,18 @@ export default {
     playNode (value) {
     },
     play (value) {
-      this.playNode(value.replace('s', '#'))
+      if (sampler.loaded) {
+        this.screenContent = value.replace('s', '#')
+        this.playNode(value.replace('s', '#'))
+      }
     },
     arrayRemove (arr, value) {
       return arr.filter((ele) => {
         return (ele !== value)
       })
+    },
+    findKey (obj, value, compare = (a, b) => a === b) {
+      return Object.keys(obj).find(k => compare(obj[k], value))
     },
     switchMapping () {
       if (this.mappingState === 'real') this.mappingState = 'max'
@@ -404,12 +420,28 @@ export default {
           sampler.triggerAttackRelease('c7', '2n')
         }, 1000)
       } else clearInterval(interval)
+    },
+    switchSound (sound) {
+      const { files } = samplerInit.init()
+      this.soundsChoose = false
+      this.screenContent = 'LOADING'
+      sampler = new Tone.Sampler(files, function () {
+        sampler.toDestination()
+        this.playNode = function (value) {
+          sampler.triggerAttackRelease(value, '2n')
+        }
+        this.screenContent = 'PLAY'
+      }.bind(this), `/${sound}/`)
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
+  @font-face{
+    font-family: 'Segment14';
+    src : url('../assets/fonts/Segment14.otf');
+  }
   .Piano{
     background-color: #D3D9DF;
     display: flex;
@@ -730,6 +762,31 @@ export default {
                 width: 100%;
                 height: 100%;
                 background-image: linear-gradient(#fffbf7 0%,#d3d0ce 15%,#c0bfc0 50%,#d3d0ce 85%,#fffbf7 100%);
+                font-family: 'Segment14';
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #ececec;
+                font-size: 36px;
+                .lists{
+                  font-size: 16px;
+                  width: 100%;
+                  line-height: 18px;
+                  background-color: #bbb8bb;
+                  li{
+                    border: #c0bdbd 1px solid;
+                    border-left: none;
+                    border-right: none;
+                    text-align: center;
+                    cursor: pointer;
+                  }
+                  li:hover{
+                    background-color: #9b9b9d;
+                  }
+                  li:active{
+                    background-color: #858687;
+                  }
+                }
               }
             }
           }
@@ -764,6 +821,48 @@ export default {
               display: inline-block;
               position: relative;
               height: 198px;
+              position: relative;
+              .whiteKeyValue{
+                position: absolute;
+                color: #6e6e6e;
+                font-size: 24px;
+                line-height: 24px;
+                width: 100%;
+                bottom: 24px;
+                z-index: 1;
+                text-align: center;
+              }
+              .blackKeyValue{
+                position: absolute;
+                color: #6e6e6e;
+                font-size: 22px;
+                right: 19px;
+                line-height: 22px;
+                width: 100%;
+                top: 24px;
+                z-index: 1;
+                text-align: center;
+              }
+              .alt:before{
+                content: 'Alt';
+                color: #c0bdbd90;
+                top: 24px;
+                width: 100%;
+                left: 1px;
+                font-size: 12px;
+                line-height: 22px;
+                position: absolute;
+              }
+              .small{
+                color: #6e6e6e;
+                position: absolute;
+                font-size: 14px;
+                line-height: 24px;
+                width: 100%;
+                bottom: 24px;
+                z-index: 1;
+                text-align: center;
+              }
             }
           }
         }
