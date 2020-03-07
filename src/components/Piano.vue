@@ -294,9 +294,10 @@
             <div class="top"></div>
           </div>
           <div class="keys" v-for="item in pianoConfig" :key="item.value">
+            {{mapping[item.value]}}
             <li>
-              <key v-bind:type="item.value" v-bind:down="down.includes(item.value)"  @play="play(item.value)" />
-              <key v-if="item.subValue" v-bind:type="false" v-bind:down="down.includes(item.subValue)"  @play="play(item.subValue)" />
+              <key v-bind:type="true" v-bind:down="down.includes(item.value)"  @play="play(item.value)" />
+              <key v-show="item.subValue" v-bind:type="false" v-bind:down="down.includes(item.subValue)"  @play="play(item.subValue)" />
             </li>
           </div>
           <div class="block">

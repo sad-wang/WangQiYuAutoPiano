@@ -6,7 +6,7 @@
 export default {
   name: 'key',
   props: {
-    type: String,
+    type: Boolean,
     down: Boolean
   },
   data () {
