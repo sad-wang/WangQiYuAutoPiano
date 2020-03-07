@@ -4,7 +4,7 @@
       <div class="wooden wooden-left"></div>
       <div class="main">
         <div class="button-wrapper">
-          <div class="button-square rec">
+          <div class="button-square rec" @click="recordSwitch" :class="recordState?'active':''">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square play">
+          <div class="button-square play" @click="playRecord">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -326,6 +326,7 @@ import * as Tone from 'tone'
 
 let sampler
 let interval
+
 export default {
   name: 'Piano',
   components: {
@@ -343,7 +344,9 @@ export default {
       tempo: 0,
       metroState: false,
       screenContent: 'PLAY',
-      soundsChoose: false
+      soundsChoose: false,
+      recordState: false,
+      record: []
     }
   },
   created () {
@@ -362,11 +365,13 @@ export default {
         this.play(this.mapping[e.key])
         this.on.push(e.key)
         this.down.push(this.mapping[e.key])
+        if (this.recordState) this.record.push(this.mapping[e.key])
       }
       if (e.altKey) {
         this.play(this.mapping['#' + e.key])
         this.on.push('#' + e.key)
         this.down.push(this.mapping['#' + e.key])
+        if (this.recordState) this.record.push(this.mapping['#' + e.key])
       }
     })
     document.addEventListener('keyup', (e) => {
@@ -433,6 +438,27 @@ export default {
         }
         this.screenContent = 'PLAY'
       }.bind(this), `/${sound}/`)
+    },
+    recordSwitch () {
+      this.recordState = !this.recordState
+      if (this.recordState) {
+        this.record = []
+        const recordInterval = setInterval(() => {
+          if (!this.recordState) clearInterval(recordInterval)
+          this.record.push('')
+        }, 10)
+      }
+    },
+    playRecord () {
+      let i = 0
+      const length = this.record.length
+      const interval = setInterval(() => {
+        if (i === length) clearInterval(interval)
+        if (this.record[i]) {
+          this.play(this.record[i])
+        }
+        i++
+      }, 10)
     }
   }
 }
