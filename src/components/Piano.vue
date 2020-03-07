@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square play" @click="playRecord">
+          <div class="button-square play" @click="playRecord" :class="playState?'active':''">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -346,7 +346,8 @@ export default {
       screenContent: 'PLAY',
       soundsChoose: false,
       recordState: false,
-      record: []
+      record: [],
+      playState: false
     }
   },
   created () {
@@ -442,6 +443,7 @@ export default {
     recordSwitch () {
       this.recordState = !this.recordState
       if (this.recordState) {
+        this.playState = false
         this.record = []
         const recordInterval = setInterval(() => {
           if (!this.recordState) clearInterval(recordInterval)
@@ -450,15 +452,23 @@ export default {
       }
     },
     playRecord () {
-      let i = 0
-      const length = this.record.length
-      const interval = setInterval(() => {
-        if (i === length) clearInterval(interval)
-        if (this.record[i]) {
-          this.play(this.record[i])
+      if (!this.recordState) {
+        this.playState = !this.playState
+        if (this.playState) {
+          let i = 0
+          const length = this.record.length
+          const interval = setInterval(() => {
+            if (i === length || this.recordState) {
+              clearInterval(interval)
+              this.playState = false
+            }
+            if (this.record[i]) {
+              this.play(this.record[i])
+            }
+            i++
+          }, 10)
         }
-        i++
-      }, 10)
+      }
     }
   }
 }
