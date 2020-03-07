@@ -92,10 +92,10 @@
             </div>
           </div>
           <div class="mapping">
-            <div class="mapping-button" :class="mappingState==='real'?'active':''" @click="switchMapping" >
+            <div class="mapping-button" :class="mappingState==='real'?'':'active'" @click="switchMapping" >
             </div>
           </div>
-          <div class="button-square sustain">
+          <div class="button-square sustain" @click="switchSustain" :class="sustainState?'active':''">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -294,7 +294,6 @@
             <div class="top"></div>
           </div>
           <div class="keys" v-for="item in pianoConfig" :key="item.value">
-            {{mapping[item.value]}}
             <li>
               <key v-bind:type="true" v-bind:down="down.includes(item.value)"  @play="play(item.value)" />
               <key v-show="item.subValue" v-bind:type="false" v-bind:down="down.includes(item.subValue)"  @play="play(item.subValue)" />
@@ -318,6 +317,7 @@ import keysMatch from '../config/keysMatch'
 import key from '@/components/key.vue'
 import * as Tone from 'tone'
 
+let sampler
 export default {
   name: 'Piano',
   components: {
@@ -329,14 +329,15 @@ export default {
       on: [],
       down: [],
       mapping: keysMatch.real,
-      mappingState: 'real'
+      mappingState: 'real',
+      sustainState: false
     }
   },
   created () {
     const { files, baseUrl } = samplerInit.init()
-    const sampler = new Tone.Sampler(files, function () {
+    sampler = new Tone.Sampler(files, function () {
+      sampler.toDestination()
       this.playNode = function (value) {
-        sampler.toDestination()
         sampler.triggerAttackRelease(value, '2n')
       }
     }.bind(this), baseUrl)
@@ -379,6 +380,13 @@ export default {
       if (this.mappingState === 'real') this.mappingState = 'max'
       else this.mappingState = 'real'
       this.mapping = keysMatch[this.mappingState]
+    },
+    switchSustain () {
+      this.sustainState = !this.sustainState
+      const time = this.sustainState ? '2n' : '4n'
+      this.playNode = function (value) {
+        sampler.triggerAttackRelease(value, time)
+      }
     }
   }
 }
@@ -470,7 +478,7 @@ export default {
           .metro:before{
             content: 'METRO';
           }
-          .button-square:active{
+          .button-square.active{
             .lamp{
               width: 12px;
               height: 12px;
