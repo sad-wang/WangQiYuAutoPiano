@@ -258,7 +258,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square metro" @click="switchMetro" :class="metroState ? 'avtive' : ''">
+          <div class="button-square metro" @click="switchMetro" :class="metroState ? 'active' : ''">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
