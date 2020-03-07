@@ -258,7 +258,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square metro">
+          <div class="button-square metro" @click="switchMetro" :class="metroState ? 'avtive' : ''">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -318,6 +318,7 @@ import key from '@/components/key.vue'
 import * as Tone from 'tone'
 
 let sampler
+let interval
 export default {
   name: 'Piano',
   components: {
@@ -331,7 +332,8 @@ export default {
       mapping: keysMatch.real,
       mappingState: 'real',
       sustainState: false,
-      tempo: 0
+      tempo: 0,
+      metroState: false
     }
   },
   created () {
@@ -394,6 +396,14 @@ export default {
       console.log(this.tempo)
       this.tempo -= value
       sampler.volume.value = this.tempo
+    },
+    switchMetro () {
+      this.metroState = !this.metroState
+      if (this.metroState) {
+        interval = setInterval(() => {
+          sampler.triggerAttackRelease('c7', '2n')
+        }, 1000)
+      } else clearInterval(interval)
     }
   }
 }
