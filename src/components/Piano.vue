@@ -219,7 +219,7 @@
             </div>
           </div>
           <div class="tempo-wrapper">
-            <div class="tempo-up">
+            <div class="tempo-up" @click="switchVolume('up')">
                 <div class="point-wrapper">
                   <div class="point-row">
                     <div class="point"></div>
@@ -238,7 +238,7 @@
                   </div>
                 </div>
             </div>
-            <div class="tempo-down">
+            <div class="tempo-down" @click="switchVolume('down')">
               <div class="point-wrapper">
                 <div class="point-row">
                   <div class="point"></div>
@@ -330,7 +330,8 @@ export default {
       down: [],
       mapping: keysMatch.real,
       mappingState: 'real',
-      sustainState: false
+      sustainState: false,
+      tempo: 0
     }
   },
   created () {
@@ -387,6 +388,12 @@ export default {
       this.playNode = function (value) {
         sampler.triggerAttackRelease(value, time)
       }
+    },
+    switchVolume (action) {
+      const value = action === 'up' ? '-1' : '1'
+      console.log(this.tempo)
+      this.tempo -= value
+      sampler.volume.value = this.tempo
     }
   }
 }
