@@ -92,7 +92,7 @@
             </div>
           </div>
           <div class="mapping">
-            <div class="mapping-button">
+            <div class="mapping-button" :class="mappingState==='real'?'active':''" @click="switchMapping" >
             </div>
           </div>
           <div class="button-square sustain">
@@ -131,7 +131,7 @@
               </div>
             </div>
           </div>
-            <div class="button-square sounds">
+          <div class="button-square sounds">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -327,7 +327,8 @@ export default {
       pianoConfig: pianoConfig,
       on: [],
       down: [],
-      keysMatch: keysMatch.real
+      mapping: keysMatch.real,
+      mappingState: 'real'
     }
   },
   created () {
@@ -343,22 +344,22 @@ export default {
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'F11') e.preventDefault()
       if (!e.altKey && !this.on.includes(e.key)) {
-        this.play(this.keysMatch[e.key])
+        this.play(this.mapping[e.key])
         this.on.push(e.key)
-        this.down.push(this.keysMatch[e.key])
+        this.down.push(this.mapping[e.key])
       }
       if (e.altKey) {
-        this.play(this.keysMatch['#' + e.key])
+        this.play(this.mapping['#' + e.key])
         this.on.push('#' + e.key)
-        this.down.push(this.keysMatch['#' + e.key])
+        this.down.push(this.mapping['#' + e.key])
       }
     })
     document.addEventListener('keyup', (e) => {
       this.on = this.arrayRemove(this.on, e.key)
-      this.down = this.arrayRemove(this.down, this.keysMatch[e.key])
+      this.down = this.arrayRemove(this.down, this.mapping[e.key])
       if (e.altKey) {
         this.on = this.arrayRemove(this.on, '#' + e.key)
-        this.down = this.arrayRemove(this.down, this.keysMatch['#' + e.key])
+        this.down = this.arrayRemove(this.down, this.mapping['#' + e.key])
       }
     })
   },
@@ -372,6 +373,11 @@ export default {
       return arr.filter((ele) => {
         return (ele !== value)
       })
+    },
+    switchMapping () {
+      if (this.mappingState === 'real') this.mappingState = 'max'
+      else this.mappingState = 'real'
+      this.mapping = keysMatch[this.mappingState]
     }
   }
 }
@@ -545,14 +551,6 @@ export default {
             bottom: -20px;
             left: -10px;
           }
-          .mapping:active{
-            .mapping-button:after{
-              right: 35px;
-              bottom: 9px;
-              transform: rotate(130deg);
-              border-color: transparent transparent transparent #fffbff;
-            }
-          }
           .mapping{
             margin-top: 30px;
             margin-bottom: 4px;
@@ -566,6 +564,12 @@ export default {
             justify-content: center;
             align-items: center;
             position: relative;
+            .mapping-button.active:after{
+              right: 35px;
+              bottom: 9px;
+              transform: rotate(130deg);
+              border-color: transparent transparent transparent #fffbff;
+            }
             .mapping-button{
               background-color: #d9dbe1;
               width: 25px;
