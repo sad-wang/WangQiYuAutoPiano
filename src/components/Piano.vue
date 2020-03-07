@@ -412,6 +412,7 @@ export default {
       console.log(this.tempo)
       this.tempo -= value
       sampler.volume.value = this.tempo
+      this.screenContent = this.tempo + 'DEC'
     },
     switchMetro () {
       this.metroState = !this.metroState
