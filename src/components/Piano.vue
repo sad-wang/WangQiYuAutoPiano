@@ -327,7 +327,7 @@ export default {
       pianoConfig: pianoConfig,
       on: [],
       down: [],
-      keysMatch: keysMatch.max
+      keysMatch: keysMatch.real
     }
   },
   created () {
@@ -341,7 +341,7 @@ export default {
   },
   mounted () {
     document.addEventListener('keydown', (e) => {
-      e.preventDefault()
+      if (e.key !== 'F11') e.preventDefault()
       if (!e.altKey && !this.on.includes(e.key)) {
         this.play(this.keysMatch[e.key])
         this.on.push(e.key)
@@ -381,10 +381,11 @@ export default {
   .Piano{
     background-color: #D3D9DF;
     display: flex;
+    flex: 1;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding-bottom: 10px;
     .piano{
       display: flex;
       flex-direction: row;

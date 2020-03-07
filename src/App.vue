@@ -20,7 +20,6 @@ img{vertical-align:top;border:none}
   height: 100vh;
   display: flex;
   flex-direction: column;
-  border: 1px saddlebrown solid;
 }
 </style>
 
