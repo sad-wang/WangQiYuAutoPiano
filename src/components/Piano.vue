@@ -4,7 +4,7 @@
       <div class="wooden wooden-left"></div>
       <div class="main">
         <div class="button-wrapper">
-          <div class="button-square rec" @click="recordSwitch" :class="recordState?'active':''">
+          <div class="button-square rec" @click="recordStateSwitch" :class="recordState?'active':''">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -92,10 +92,10 @@
             </div>
           </div>
           <div class="mapping">
-            <div class="mapping-button" :class="mappingState==='real'?'':'active'" @click="switchMapping" >
+            <div class="mapping-button" :class="mappingState==='real'?'':'active'" @click="mappingStateSwitch" >
             </div>
           </div>
-          <div class="button-square sustain" @click="switchSustain" :class="sustainState?'active':''">
+          <div class="button-square sustain" @click="sustainStateSwitch" :class="sustainState?'active':''">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -127,15 +127,15 @@
           <div class="screen-wrapper">
             <div class="screen">
               <div class="screen-inner">
-                <div v-if="!soundsChoose">{{screenContent}}</div>
+                <div v-if="!soundState">{{screenContent}}</div>
                 <div v-else class="lists">
-                  <li @click="switchSound('piano')">01 Piano</li>
-                  <li @click="switchSound('guitar')">02 Guitar</li>
+                  <li @click="soundStateSwitch('piano')">01 Piano</li>
+                  <li @click="soundStateSwitch('guitar')">02 Guitar</li>
                 </div>
               </div>
             </div>
           </div>
-          <div class="button-square sounds" :class="soundsChoose?'active':''" @click="soundsChoose = !soundsChoose">
+          <div class="button-square sounds" :class="soundState?'active':''" @click="soundState = !soundState">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -223,7 +223,7 @@
             </div>
           </div>
           <div class="tempo-wrapper">
-            <div class="tempo-up" @click="switchVolume('up')">
+            <div class="tempo-up" @click="volumeStateSwitch('up')">
                 <div class="point-wrapper">
                   <div class="point-row">
                     <div class="point"></div>
@@ -242,7 +242,7 @@
                   </div>
                 </div>
             </div>
-            <div class="tempo-down" @click="switchVolume('down')">
+            <div class="tempo-down" @click="volumeStateSwitch('down')">
               <div class="point-wrapper">
                 <div class="point-row">
                   <div class="point"></div>
@@ -262,7 +262,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square metro" @click="switchMetro" :class="metroState ? 'active' : ''">
+          <div class="button-square metro" @click="metroStateSwitch" :class="metroState ? 'active' : ''">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -299,11 +299,11 @@
           </div>
           <div class="keys" v-for="item in pianoConfig" :key="item.value">
             <li>
-              <div v-if="keysState" class="whiteKeyValue" @click="play(item.value)" :class="`${findKey(mapping,item.value)}`.length > 2 ? 'small' : 'whiteKeyValue'">{{findKey(mapping,item.value)}}</div>
-              <key v-bind:type="true" v-bind:down="down.includes(item.value)"  @play="play(item.value)" />
-              <div class="blackKeyValue" @click="play(item.subValue)"  v-if="mappingState==='real'&&keysState" >{{findKey(mapping,item.subValue)}}</div>
-              <div class="blackKeyValue alt" @click="play(item.subValue)"  v-if="mappingState==='max'&&item.subValue&&keysState" >{{`${findKey(mapping,item.subValue)}`.replace('#','')}}</div>
-              <key v-show="item.subValue" v-bind:type="false" v-bind:down="down.includes(item.subValue)"  @play="play(item.subValue)" />
+              <div v-if="keysState" class="whiteKeyValue" @click="play(item.value)" :class="`${lib.findKey(mapping,item.value)}`.length > 2 ? 'small' : 'whiteKeyValue'">{{lib.findKey(mapping,item.value)}}</div>
+              <key v-bind:type="true" v-bind:downing="down.includes(item.value)"  @play="play(item.value)" @played="played(item.value)" />
+              <div class="blackKeyValue" @click="play(item.subValue)"  v-if="mappingState==='real'&&keysState" >{{lib.findKey(mapping,item.subValue)}}</div>
+              <div class="blackKeyValue alt" @click="play(item.subValue)"  v-if="mappingState==='max'&&item.subValue&&keysState" >{{`${lib.findKey(mapping,item.subValue)}`.replace('#','')}}</div>
+              <key v-show="item.subValue" v-bind:type="false" v-bind:downing="down.includes(item.subValue)"  @play="play(item.subValue)" @played="played(item.subValue)" />
             </li>
           </div>
           <div class="block">
@@ -320,6 +320,7 @@
 <script>
 import pianoConfig from '../config/pianoConfig'
 import samplerInit from '../lib/samplerInit'
+import lib from '../lib/lib'
 import keysMatch from '../config/keysMatch'
 import key from '@/components/key.vue'
 import * as Tone from 'tone'
@@ -334,12 +335,8 @@ export default {
   },
   data () {
     return {
-      pianoConfig: pianoConfig,
-      on: [],
-      down: [],
-
       sampler: '',
-
+      pianoConfig: '',
       mapping: '',
       volume: '',
       screenContent: '',
@@ -349,49 +346,40 @@ export default {
       keysState: false,
       sustainState: true,
       metroState: false,
-      soundsChoose: false,
+      soundState: false,
       recordState: false,
-      playState: false
+      playState: false,
+
+      keysDowning: [],
+      down: []
     }
   },
   mounted () {
     this.init()
-    document.addEventListener('keydown', (e) => {
-      if (e.key !== 'F11') e.preventDefault()
-      if (!e.altKey && !this.on.includes(e.key)) {
-        this.play(this.mapping[e.key])
-        this.on.push(e.key)
-        this.down.push(this.mapping[e.key])
-        if (this.recordState) this.record.push(this.mapping[e.key])
-      }
-      if (e.altKey && !this.on.includes('#' + e.key)) {
-        this.play(this.mapping['#' + e.key])
-        this.on.push('#' + e.key)
-        this.down.push(this.mapping['#' + e.key])
-        if (this.recordState) this.record.push(this.mapping['#' + e.key])
-      }
-    })
-    document.addEventListener('keyup', (e) => {
-      this.on = this.arrayRemove(this.on, e.key)
-      this.down = this.arrayRemove(this.down, this.mapping[e.key])
-      if (e.altKey) {
-        this.on = this.arrayRemove(this.on, '#' + e.key)
-        this.down = this.arrayRemove(this.down, this.mapping['#' + e.key])
-      }
-    })
+    this.addKeyboardListener()
   },
   methods: {
     init () {
+      this.initKeyboard(pianoConfig)
       this.samplerInit('piano')
-      this.mappingInit()
-      this.volumeInit()
+      this.mappingInit('real', keysMatch.real)
+      this.volumeInit(this.sampler.volume.value)
+      this.sustainInit('2n')
     },
-    mappingInit () {
-      this.mappingState = 'real'
-      this.mapping = keysMatch.real
+    mappingInit (state, mapping) {
+      this.mappingState = state
+      this.mapping = mapping
     },
-    volumeInit () {
-      this.volume = this.sampler.volume.value
+    initKeyboard (config) {
+      this.pianoConfig = config
+    },
+    volumeInit (value) {
+      this.volume = value
+    },
+    sustainInit (time) {
+      this.playNote = function (value) {
+        this.sampler.triggerAttackRelease(value, time)
+      }
     },
     samplerInit (sound) {
       const { files } = samplerInit.init()
@@ -400,6 +388,39 @@ export default {
         this.sampler.toDestination()
         this.screenContent = 'PLAY'
       }, `/${sound}/`)
+    },
+    addKeyboardListener () {
+      this.keydownListener()
+      this.keyupListener()
+    },
+    keydownListener () {
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'F11') e.preventDefault()
+        if (!e.altKey && !this.keysDowning.includes(e.key)) {
+          this.keyPressDown(e.key)
+        }
+        if (e.altKey && !this.keysDowning.includes('#' + e.key)) {
+          this.keyPressDown('#' + e.key)
+        }
+      })
+    },
+    keyupListener () {
+      document.addEventListener('keyup', (e) => {
+        this.keysDowning = lib.arrayRemove(this.keysDowning, e.key)
+        this.down = lib.arrayRemove(this.down, this.mapping[e.key])
+        if (e.altKey) {
+          this.keysDowning = lib.arrayRemove(this.keysDowning, '#' + e.key)
+          this.down = lib.arrayRemove(this.down, this.mapping['#' + e.key])
+        }
+      })
+    },
+    played (value) {
+      this.down = lib.arrayRemove(this.down, value)
+    },
+    keyPressDown (key) {
+      this.keysDowning.push(key)
+      this.play(this.mapping[key])
+      if (this.recordState) this.record.push(this.mapping[key])
     },
     playMidi () {
       const midi = Midi.fromUrl('/送别.mid')
@@ -424,49 +445,42 @@ export default {
               this.down.push(node)
             }.bind(that), (note.time + now) * 1000)
             setTimeout(function () {
-              this.down = this.arrayRemove(this.down, node)
+              this.down = lib.arrayRemove(this.down, node)
             }.bind(that), (note.time + now + note.duration) * 1000)
             this.sampler.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
           }.bind(that))
         })
       })
     },
-    playNode (value) {
+    playNote (value) {
       this.sampler.triggerAttackRelease(value, '2n')
     },
     play (value) {
       if (this.sampler.loaded) {
         this.screenContent = value.replace('s', '#')
-        this.playNode(value.replace('s', '#'))
+        this.playNote(value.replace('s', '#'))
       }
+      this.down.push(value)
     },
-    arrayRemove (arr, value) {
-      return arr.filter((ele) => {
-        return (ele !== value)
-      })
-    },
-    findKey (obj, value, compare = (a, b) => a === b) {
-      return Object.keys(obj).find(k => compare(obj[k], value))
-    },
-    switchMapping () {
+    mappingStateSwitch () {
       if (this.mappingState === 'real') this.mappingState = 'max'
       else this.mappingState = 'real'
       this.mapping = keysMatch[this.mappingState]
     },
-    switchSustain () {
+    sustainStateSwitch () {
       this.sustainState = !this.sustainState
       const time = this.sustainState ? '2n' : '4n'
-      this.playNode = function (value) {
+      this.playNote = function (value) {
         this.sampler.triggerAttackRelease(value, time)
       }
     },
-    switchVolume (action) {
+    volumeStateSwitch (action) {
       const value = action === 'up' ? '-1' : '1'
       this.volume -= value
       this.sampler.volume.value = this.volume
       this.screenContent = this.volume + 'DEC'
     },
-    switchMetro () {
+    metroStateSwitch () {
       this.metroState = !this.metroState
       if (this.metroState) {
         interval = setInterval(() => {
@@ -474,19 +488,19 @@ export default {
         }, 1000)
       } else clearInterval(interval)
     },
-    switchSound (sound) {
+    soundStateSwitch (sound) {
       const { files } = samplerInit.init()
-      this.soundsChoose = false
+      this.soundState = false
       this.screenContent = 'LOADING'
       this.sampler = new Tone.Sampler(files, function () {
         this.sampler.toDestination()
-        this.playNode = function (value) {
+        this.playNote = function (value) {
           this.sampler.triggerAttackRelease(value, '2n')
         }
         this.screenContent = 'PLAY'
       }.bind(this), `/${sound}/`)
     },
-    recordSwitch () {
+    recordStateSwitch () {
       this.recordState = !this.recordState
       if (this.recordState) {
         this.playState = false

@@ -1,5 +1,5 @@
 <template>
-  <div  :class="[{active: isActive || down}, type ? 'white-key' : 'black-key']" @mousedown="play()" @mouseout="mouseEnd" @mouseup="mouseEnd" ></div>
+  <div  :class="[{active: downing}, type ? 'white-key' : 'black-key']" @mousedown="mouseDown" @mouseout="mouseUp" @mouseup="mouseUp" ></div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {
   name: 'key',
   props: {
     type: Boolean,
-    down: Boolean
+    downing: Boolean
   },
   data () {
     return {
@@ -17,12 +17,11 @@ export default {
   mounted () {
   },
   methods: {
-    play () {
+    mouseDown () {
       this.$emit('play')
-      this.isActive = true
     },
-    mouseEnd () {
-      this.isActive = false
+    mouseUp () {
+      this.$emit('played')
     }
   }
 }
