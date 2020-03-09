@@ -3,11 +3,16 @@
     <div class="notation">
       <div class="left">
         <div class="pages"></div>
-        <div class="page-left"></div>
+        <div class="page-left">
+          <div class="content">
+            1 23 213 334252
+          </div>
+        </div>
       </div>
       <div class="right">
-        <div class="page-right"></div>
-        <div class="pages"></div>
+        <div class="page-right">
+          长亭外 古道边
+        </div>
       </div>
     </div>
   </div>
@@ -54,6 +59,8 @@ export default {
         height: 100%;
         box-shadow: 3px 0 5px #868686;
         background-image: linear-gradient(to right,#f0f0f0 0%,#f1f1f1 10%,#d9d9d9 78%,#b1b1b1 100%);
+        .content{
+        }
       }
     }
     .right{

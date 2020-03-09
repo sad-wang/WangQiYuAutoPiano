@@ -325,7 +325,6 @@ import key from '@/components/key.vue'
 import * as Tone from 'tone'
 import { Midi } from '@tonejs/midi'
 
-let sampler
 let interval
 
 export default {
@@ -338,29 +337,25 @@ export default {
       pianoConfig: pianoConfig,
       on: [],
       down: [],
-      mapping: keysMatch.real,
+
+      sampler: '',
+
+      mapping: '',
+      volume: '',
+      screenContent: '',
+      record: [],
+
+      mappingState: null,
       keysState: false,
-      mappingState: 'real',
-      sustainState: false,
-      tempo: 0,
+      sustainState: true,
       metroState: false,
-      screenContent: 'PLAY',
       soundsChoose: false,
       recordState: false,
-      record: [],
       playState: false
     }
   },
-  created () {
-    const { files, baseUrl } = samplerInit.init()
-    sampler = new Tone.Sampler(files, function () {
-      sampler.toDestination()
-      this.playNode = function (value) {
-        sampler.triggerAttackRelease(value, '2n')
-      }
-    }.bind(this), baseUrl)
-  },
   mounted () {
+    this.init()
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'F11') e.preventDefault()
       if (!e.altKey && !this.on.includes(e.key)) {
@@ -386,8 +381,28 @@ export default {
     })
   },
   methods: {
+    init () {
+      this.samplerInit('piano')
+      this.mappingInit()
+      this.volumeInit()
+    },
+    mappingInit () {
+      this.mappingState = 'real'
+      this.mapping = keysMatch.real
+    },
+    volumeInit () {
+      this.volume = this.sampler.volume.value
+    },
+    samplerInit (sound) {
+      const { files } = samplerInit.init()
+      this.screenContent = 'LOADING'
+      this.sampler = new Tone.Sampler(files, () => {
+        this.sampler.toDestination()
+        this.screenContent = 'PLAY'
+      }, `/${sound}/`)
+    },
     playMidi () {
-      const midi = Midi.fromUrl('/result.mid')
+      const midi = Midi.fromUrl('/送别.mid')
       midi.then(midi => {
         const synths = []
         const now = Tone.now() + 0.5
@@ -411,15 +426,16 @@ export default {
             setTimeout(function () {
               this.down = this.arrayRemove(this.down, node)
             }.bind(that), (note.time + now + note.duration) * 1000)
-            sampler.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
+            this.sampler.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
           }.bind(that))
         })
       })
     },
     playNode (value) {
+      this.sampler.triggerAttackRelease(value, '2n')
     },
     play (value) {
-      if (sampler.loaded) {
+      if (this.sampler.loaded) {
         this.screenContent = value.replace('s', '#')
         this.playNode(value.replace('s', '#'))
       }
@@ -441,21 +457,20 @@ export default {
       this.sustainState = !this.sustainState
       const time = this.sustainState ? '2n' : '4n'
       this.playNode = function (value) {
-        sampler.triggerAttackRelease(value, time)
+        this.sampler.triggerAttackRelease(value, time)
       }
     },
     switchVolume (action) {
       const value = action === 'up' ? '-1' : '1'
-      console.log(this.tempo)
-      this.tempo -= value
-      sampler.volume.value = this.tempo
-      this.screenContent = this.tempo + 'DEC'
+      this.volume -= value
+      this.sampler.volume.value = this.volume
+      this.screenContent = this.volume + 'DEC'
     },
     switchMetro () {
       this.metroState = !this.metroState
       if (this.metroState) {
         interval = setInterval(() => {
-          sampler.triggerAttackRelease('c7', '2n')
+          this.sampler.triggerAttackRelease('c7', '2n')
         }, 1000)
       } else clearInterval(interval)
     },
@@ -463,10 +478,10 @@ export default {
       const { files } = samplerInit.init()
       this.soundsChoose = false
       this.screenContent = 'LOADING'
-      sampler = new Tone.Sampler(files, function () {
-        sampler.toDestination()
+      this.sampler = new Tone.Sampler(files, function () {
+        this.sampler.toDestination()
         this.playNode = function (value) {
-          sampler.triggerAttackRelease(value, '2n')
+          this.sampler.triggerAttackRelease(value, '2n')
         }
         this.screenContent = 'PLAY'
       }.bind(this), `/${sound}/`)
@@ -730,7 +745,7 @@ export default {
             }
           .tempo-wrapper:before{
             border-top: 3px solid #1a1e2190;
-            content: 'TEMPO';
+            content: 'VOLUME';
             color: #c0c0c0;
             width: 64px;
             height: 19px;
