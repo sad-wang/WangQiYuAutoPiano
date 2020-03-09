@@ -164,7 +164,7 @@
               </div>
             </div>
           </div>
-          <div class="button-square auto">
+          <div class="button-square auto" @click="playMidi">
             <div class="lamp"></div>
             <div class="point-wrapper">
               <div class="point-row">
@@ -323,6 +323,7 @@ import samplerInit from '../lib/samplerInit'
 import keysMatch from '../config/keysMatch'
 import key from '@/components/key.vue'
 import * as Tone from 'tone'
+import { Midi } from '@tonejs/midi'
 
 let sampler
 let interval
@@ -385,6 +386,36 @@ export default {
     })
   },
   methods: {
+    playMidi () {
+      const midi = Midi.fromUrl('/result.mid')
+      midi.then(midi => {
+        const synths = []
+        const now = Tone.now() + 0.5
+        midi.tracks.forEach(track => {
+          const synth = new Tone.PolySynth(Tone.Synth, {
+            envelope: {
+              attack: 0.02,
+              decay: 0.1,
+              sustain: 0.3,
+              release: 1
+            }
+          }).toDestination()
+          synths.push(synth)
+          const that = this
+          track.notes.forEach(function (note) {
+            const that = this
+            const node = note.name.replace('#', 's').toLocaleLowerCase()
+            setTimeout(function () {
+              this.down.push(node)
+            }.bind(that), (note.time + now) * 1000)
+            setTimeout(function () {
+              this.down = this.arrayRemove(this.down, node)
+            }.bind(that), (note.time + now + note.duraton) * 1000)
+            sampler.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
+          }.bind(that))
+        })
+      })
+    },
     playNode (value) {
     },
     play (value) {
