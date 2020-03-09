@@ -410,7 +410,7 @@ export default {
             }.bind(that), (note.time + now) * 1000)
             setTimeout(function () {
               this.down = this.arrayRemove(this.down, node)
-            }.bind(that), (note.time + now + note.duraton) * 1000)
+            }.bind(that), (note.time + now + note.duration) * 1000)
             sampler.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
           }.bind(that))
         })
