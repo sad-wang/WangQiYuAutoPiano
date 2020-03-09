@@ -299,10 +299,10 @@
           </div>
           <div class="keys" v-for="item in pianoConfig" :key="item.value">
             <li>
-              <div v-if="keysState" class="whiteKeyValue" :class="`${findKey(mapping,item.value)}`.length > 2 ? 'small' : 'whiteKeyValue'">{{findKey(mapping,item.value)}}</div>
+              <div v-if="keysState" class="whiteKeyValue" @click="play(item.value)" :class="`${findKey(mapping,item.value)}`.length > 2 ? 'small' : 'whiteKeyValue'">{{findKey(mapping,item.value)}}</div>
               <key v-bind:type="true" v-bind:down="down.includes(item.value)"  @play="play(item.value)" />
-              <div class="blackKeyValue" v-if="mappingState==='real'&&keysState" >{{findKey(mapping,item.subValue)}}</div>
-              <div class="blackKeyValue alt" v-if="mappingState==='max'&&item.subValue&&keysState" >{{`${findKey(mapping,item.subValue)}`.replace('#','')}}</div>
+              <div class="blackKeyValue" @click="play(item.subValue)"  v-if="mappingState==='real'&&keysState" >{{findKey(mapping,item.subValue)}}</div>
+              <div class="blackKeyValue alt" @click="play(item.subValue)"  v-if="mappingState==='max'&&item.subValue&&keysState" >{{`${findKey(mapping,item.subValue)}`.replace('#','')}}</div>
               <key v-show="item.subValue" v-bind:type="false" v-bind:down="down.includes(item.subValue)"  @play="play(item.subValue)" />
             </li>
           </div>
@@ -368,7 +368,7 @@ export default {
         this.down.push(this.mapping[e.key])
         if (this.recordState) this.record.push(this.mapping[e.key])
       }
-      if (e.altKey) {
+      if (e.altKey && !this.on.includes('#' + e.key)) {
         this.play(this.mapping['#' + e.key])
         this.on.push('#' + e.key)
         this.down.push(this.mapping['#' + e.key])
