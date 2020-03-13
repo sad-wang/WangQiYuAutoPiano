@@ -436,16 +436,16 @@ export default {
       const midi = Midi.fromUrl('/送别.mid')
       midi.then(midi => {
         const synths = []
+        const synth = new Tone.PolySynth(Tone.Synth, {
+          envelope: {
+            attack: 0.02,
+            decay: 0.1,
+            sustain: 0.3,
+            release: 1
+          }
+        }).toDestination()
         const now = Tone.now() + 0.5
         midi.tracks.forEach(track => {
-          const synth = new Tone.PolySynth(Tone.Synth, {
-            envelope: {
-              attack: 0.02,
-              decay: 0.1,
-              sustain: 0.3,
-              release: 1
-            }
-          }).toDestination()
           synths.push(synth)
           const that = this
           track.notes.forEach(function (note) {
@@ -453,10 +453,10 @@ export default {
             const node = note.name.replace('#', 's').toLocaleLowerCase()
             setTimeout(function () {
               this.down.push(node)
-            }.bind(that), (note.time + now) * 1000)
+            }.bind(that), (note.time) * 1000)
             setTimeout(function () {
               this.down = this.arrayRemove(this.down, node)
-            }.bind(that), (note.time + now + note.duration) * 1000)
+            }.bind(that), (note.time + note.duration) * 1000)
             this.sampler.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
           }.bind(that))
         })
