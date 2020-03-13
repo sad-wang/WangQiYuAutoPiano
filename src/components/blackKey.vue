@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "blackKey.vue"
+        name: 'blackKey.vue'
     }
 </script>
 
