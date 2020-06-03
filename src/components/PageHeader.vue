@@ -8,17 +8,24 @@
     <div class="title">AutoPiano</div>
     <div class="links">
       <li class="toIndex">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-upload"></use>
-        </svg>
-        上传
+        登录
       </li>
-      <li class="toIndex">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-shouye"></use>
-        </svg>
-        首页
-      </li>
+      <router-link to="/upload">
+        <li class="toIndex">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-upload"></use>
+          </svg>
+          上传
+        </li>
+      </router-link>
+      <router-link to="/">
+        <li class="toIndex">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shouye"></use>
+          </svg>
+          首页
+        </li>
+      </router-link>
     </div>
   </div>
 </template>
@@ -70,6 +77,7 @@ export default {
       flex-direction: row-reverse;
       align-items: center;
       li{
+        color: #bbb;
         margin: 0 10px;
         .icon{
           font-size: 18px;
