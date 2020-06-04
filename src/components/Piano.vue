@@ -6,90 +6,15 @@
         <div class="button-wrapper">
           <div class="button-square rec" @click="recordStateSwitch" :class="recordState?'active':''">
             <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
+            <pointWrapper/>
           </div>
           <div class="button-square play" @click="playRecord" :class="playState?'active':''">
             <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
+            <pointWrapper/>
           </div>
           <div class="button-square keys" :class="keysState?'active':''" @click="keysStateSwitch">
             <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
+            <pointWrapper/>
           </div>
           <div class="mapping">
             <div class="mapping-button" :class="mappingState==='real'?'':'active'" @click="mappingStateSwitch" >
@@ -97,37 +22,15 @@
           </div>
           <div class="button-square sustain" @click="sustainStateSwitch" :class="sustainState?'active':''">
             <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
+            <pointWrapper/>
           </div>
           <div class="screen-wrapper">
             <div class="screen">
               <div class="screen-inner">
-                <div v-if="!soundState">{{screenContent}}</div>
+                <div v-if="metroState" class="lists">
+                  <li @click="showSheet(index)" v-for="(item, index) in musicSheetData" :key="item">{{index}} {{item.title}}</li>
+                </div>
+                <div v-else-if="!soundState">{{screenContent}}</div>
                 <div v-else class="lists">
                   <li @click="soundChoose('piano')">01 Piano</li>
                   <li @click="soundChoose('guitar')">02 Guitar</li>
@@ -137,90 +40,15 @@
           </div>
           <div class="button-square sounds" :class="soundState?'active':''" @click="soundStateSwitch">
             <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
+            <pointWrapper/>
           </div>
           <div class="button-square auto" @click="playMidi">
             <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
+            <pointWrapper/>
           </div>
           <div class="button-square songs">
             <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
+            <pointWrapper/>
           </div>
           <div class="tempo-wrapper">
             <div class="tempo-up" @click="volumeStateSwitch('up')">
@@ -264,32 +92,7 @@
           </div>
           <div class="button-square metro" @click="metroStateSwitch" :class="metroState ? 'active' : ''">
             <div class="lamp"></div>
-            <div class="point-wrapper">
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-              <div class="point-row">
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-                <div class="point"></div>
-              </div>
-            </div>
+            <pointWrapper/>
           </div>
         </div>
         <div class="space"></div>
@@ -322,15 +125,17 @@ import pianoConfig from '../config/pianoConfig'
 import samplerInit from '../lib/samplerInit'
 import keysMatch from '../config/keysMatch'
 import key from '@/components/key.vue'
+import pointWrapper from '@/components/point-wrapper.vue'
 import * as Tone from 'tone'
 import { Midi } from '@tonejs/midi'
-let interval
 
 export default {
   name: 'Piano',
   components: {
-    key
+    key,
+    pointWrapper
   },
+  inject: ['eventHub'],
   data () {
     return {
       sampler: '',
@@ -338,7 +143,6 @@ export default {
       mapping: '',
       volume: '',
       screenContent: '',
-
       mappingState: null,
       keysState: false,
       sustainState: true,
@@ -346,17 +150,31 @@ export default {
       soundState: false,
       recordState: false,
       playState: false,
-
       record: [],
       keysDowning: [],
-      down: []
+      down: [],
+      musicSheetData: null
     }
   },
   mounted () {
     this.init()
     this.addKeyboardListener()
+    this.eventHub.$on('closeForm', () => {
+      this.addKeyboardListener()
+    })
+    this.eventHub.$on('openForm', () => {
+      document.removeEventListener('keyup', this.keyupListener)
+      document.removeEventListener('keydown', this.keydownListener)
+    })
+    this.eventHub.$on('getMusicSheetData', (res) => {
+      console.log(res)
+      this.musicSheetData = res.data
+    })
   },
   methods: {
+    showSheet (index) {
+      this.eventHub.$emit('showSheet', { data: this.musicSheetData[index] })
+    },
     init () {
       this.keyboardInit(pianoConfig)
       this.samplerInit('piano')
@@ -387,38 +205,32 @@ export default {
         this.screenContent = 'PLAY'
       }, `/${sound}/`)
     },
-
     addKeyboardListener () {
-      this.keydownListener()
-      this.keyupListener()
+      document.addEventListener('keyup', this.keyupListener)
+      document.addEventListener('keydown', this.keydownListener)
     },
-    keydownListener () {
-      document.addEventListener('keydown', (e) => {
-        if (e.key !== 'F11') e.preventDefault()
-        if (!e.altKey && !this.keysDowning.includes(e.key)) {
-          this.keyPressDown(e.key)
-        }
-        if (e.altKey && !this.keysDowning.includes('#' + e.key)) {
-          this.keyPressDown('#' + e.key)
-        }
-      })
+    keydownListener (e) {
+      if (e.key !== 'F11') e.preventDefault()
+      if (!e.altKey && !this.keysDowning.includes(e.key)) {
+        this.keyPressDown(e.key)
+      }
+      if (e.altKey && !this.keysDowning.includes('#' + e.key)) {
+        this.keyPressDown('#' + e.key)
+      }
     },
     keyPressDown (key) {
       this.keysDowning.push(key)
       this.play(this.mapping[key])
       if (this.recordState) this.record.push(this.mapping[key])
     },
-    keyupListener () {
-      document.addEventListener('keyup', (e) => {
-        this.keysDowning = this.arrayRemove(this.keysDowning, e.key)
-        this.down = this.arrayRemove(this.down, this.mapping[e.key])
-        if (e.altKey) {
-          this.keysDowning = this.arrayRemove(this.keysDowning, '#' + e.key)
-          this.down = this.arrayRemove(this.down, this.mapping['#' + e.key])
-        }
-      })
+    keyupListener (e) {
+      this.keysDowning = this.arrayRemove(this.keysDowning, e.key)
+      this.down = this.arrayRemove(this.down, this.mapping[e.key])
+      if (e.altKey) {
+        this.keysDowning = this.arrayRemove(this.keysDowning, '#' + e.key)
+        this.down = this.arrayRemove(this.down, this.mapping['#' + e.key])
+      }
     },
-
     play (value) {
       if (this.sampler.loaded) {
         this.screenContent = value.replace('s', '#')
@@ -462,7 +274,6 @@ export default {
         })
       })
     },
-
     keysStateSwitch () {
       this.keysState = !this.keysState
     },
@@ -486,11 +297,9 @@ export default {
     },
     metroStateSwitch () {
       this.metroState = !this.metroState
-      if (this.metroState) {
-        interval = setInterval(() => {
-          this.sampler.triggerAttackRelease('c7', '2n')
-        }, 1000)
-      } else clearInterval(interval)
+      if (!this.metroState) {
+        this.eventHub.$emit('hideSheet')
+      }
     },
     soundStateSwitch (sound) {
       this.soundState = !this.soundState
@@ -558,13 +367,7 @@ export default {
     src : url('../assets/fonts/Segment14.otf');
   }
   .Piano{
-    background-color: #D3D9DF;
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 10px;
+    background-color: #D3D9DF; display: flex; flex-direction: row; justify-content: center; align-items: center;
     .piano{
       display: flex;
       flex-direction: row;
@@ -640,7 +443,7 @@ export default {
             content: 'SONGS';
           }
           .metro:before{
-            content: 'METRO';
+            content: 'MUSIC_SHEET';
           }
           .button-square.active{
             .lamp{
@@ -685,25 +488,6 @@ export default {
               width: 2px;
               border-radius: 50%;
               background-image: linear-gradient(to left bottom,#796452,#fde5bb) ;
-            }
-            .point-wrapper{
-              width: 24px;
-              height: 24px;
-              display: flex;
-              flex-direction: column;
-              justify-content: space-around;
-              .point-row{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                .point{
-                  width: 4px;
-                  height: 4px;
-                  border-radius: 50%;
-                  background-image: linear-gradient(to right bottom,#4d4e50 0%,#43444b 60%,#23272c 70%,#23262a 100%);
-                }
-              }
             }
           }
           .mapping:before{
@@ -868,6 +652,9 @@ export default {
               border-left: 17px solid;
               width: 246px;
               height: 89px;
+              .screen-inner::-webkit-scrollbar {
+                display: none;
+              }
               .screen-inner{
                 border-radius: 3px;
                 border: 3px solid #949aa5;
@@ -883,6 +670,7 @@ export default {
                 align-items: center;
                 color: #ececec;
                 font-size: 36px;
+                overflow-y: scroll;
                 .lists{
                   font-size: 16px;
                   width: 100%;
